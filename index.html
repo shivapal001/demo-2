@@ -4,30 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finverze — Financial Discipline for the Next Generation</title>
-  <meta name="description" content="Finverze helps colleges build financially disciplined students through structured workshops and cohort programs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display+Pro:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ─── */
 :root {
-  --ink:      #09090b;
-  --ink-2:    #18181b;
-  --ink-3:    #27272a;
-  --mid:      #71717a;
-  --soft:     #a1a1aa;
-  --rule:     #e4e4e7;
-  --paper:    #f4f4f5;
-  --white:    #ffffff;
-
-  --c1: #6366f1; /* indigo */
-  --c2: #8b5cf6; /* violet */
-  --c3: #ec4899; /* pink */
-  --c4: #f97316; /* orange */
-  --c5: #06b6d4; /* cyan */
+  --ink: #0a0a0f;
+  --ink-2: #141420;
+  --ink-3: #1e1e2e;
+  --mid: #6b6b80;
+  --soft: #9d9db5;
+  --rule: #e2e2ec;
+  --paper: #f6f6fa;
+  --white: #ffffff;
+  --gold: #f5c842;
+  --gold-2: #e8a020;
+  --emerald: #00c896;
+  --violet: #6c47ff;
+  --violet-2: #8b6dff;
+  --rose: #ff4d6d;
 
   --serif: 'DM Serif Display', Georgia, serif;
-  --sans:  'Sora', system-ui, sans-serif;
+  --sans: 'Sora', system-ui, sans-serif;
 
   --r-sm: 8px;
   --r-md: 14px;
@@ -36,588 +34,427 @@
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body {
-  font-family: var(--sans);
-  background: var(--white);
-  color: var(--ink);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.6;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
-.container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.container{max-width:1120px;margin:0 auto;padding:0 32px;}
 
-/* ─── REVEAL ─── */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.22s; }
-.reveal-delay-3 { transition-delay: 0.34s; }
-.reveal-delay-4 { transition-delay: 0.46s; }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.22s;}.rd3{transition-delay:0.34s;}.rd4{transition-delay:0.46s;}
 
-/* ─── NAV ─── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  padding: 0 40px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
-  border-bottom: 1px solid transparent;
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:0 40px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background 0.4s,border-color 0.4s,box-shadow 0.4s;
+  border-bottom:1px solid transparent;
 }
-.nav.scrolled {
-  background: rgba(255,255,255,0.88);
-  border-color: var(--rule);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 var(--rule);
+.nav.scrolled{
+  background:rgba(255,255,255,0.92);
+  border-color:var(--rule);
+  backdrop-filter:blur(20px);
+  box-shadow:0 1px 0 var(--rule);
 }
-.nav__logo {
-  font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.nav__links { display: flex; gap: 36px; list-style: none; align-items: center; }
-.nav__links a { font-size: 0.85rem; font-weight: 500; color: var(--mid); transition: color 0.2s; }
-.nav__links a:hover { color: var(--ink); }
-.nav__cta { display: flex; align-items: center; gap: 10px; }
+.nav__logo{font-family:var(--sans);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);}
+.nav__links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav__links a{font-size:0.83rem;font-weight:500;color:var(--mid);transition:color 0.2s;}
+.nav__links a:hover{color:var(--ink);}
+.nav__cta{display:flex;align-items:center;gap:10px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;font-family:var(--sans);font-size:0.83rem;font-weight:600;border-radius:100px;transition:all 0.22s var(--ease);white-space:nowrap;}
+.btn--ghost{color:var(--ink);background:transparent;border:1.5px solid var(--rule);}
+.btn--ghost:hover{border-color:var(--ink-3);background:var(--paper);}
+.btn--solid{color:var(--white);background:var(--ink);border:1.5px solid transparent;}
+.btn--solid:hover{background:var(--ink-2);transform:translateY(-1px);box-shadow:0 4px 20px rgba(9,9,11,0.2);}
+.btn--large{padding:14px 32px;font-size:0.93rem;border-radius:100px;}
+.btn--violet{background:var(--violet);color:#fff;box-shadow:0 2px 16px rgba(108,71,255,0.35);}
+.btn--violet:hover{background:var(--violet-2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(108,71,255,0.5);}
 
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 22px;
-  font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
-  border-radius: 100px;
-  transition: all 0.22s var(--ease);
-  white-space: nowrap;
-}
-.btn--ghost { color: var(--ink); background: transparent; border: 1.5px solid var(--rule); }
-.btn--ghost:hover { border-color: var(--ink-3); background: var(--paper); }
-.btn--solid { color: var(--white); background: var(--ink); border: 1.5px solid transparent; }
-.btn--solid:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(9,9,11,0.2); }
-.btn--large { padding: 14px 32px; font-size: 0.95rem; border-radius: 100px; }
-
-.nav__hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
-.nav__hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
-
-/* ─── MOBILE DRAWER ─── */
-.nav__drawer {
-  position: fixed; inset: 0; z-index: 800;
-  background: var(--white);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 32px; opacity: 0; pointer-events: none;
-  transition: opacity 0.3s var(--ease);
-}
-.nav__drawer.open { opacity: 1; pointer-events: all; }
-.nav__drawer a { font-family: var(--serif); font-size: 2.5rem; color: var(--ink); letter-spacing: -1px; }
-.nav__drawer a:hover { color: var(--c1); }
+.nav__hamburger{display:none;flex-direction:column;gap:5px;padding:4px;}
+.nav__hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all 0.3s;}
+.nav__drawer{position:fixed;inset:0;z-index:800;background:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease);}
+.nav__drawer.open{opacity:1;pointer-events:all;}
+.nav__drawer a{font-family:var(--serif);font-size:2.5rem;color:var(--ink);letter-spacing:-1px;}
+.nav__drawer a:hover{color:var(--violet);}
 
 /* ─── HERO ─── */
-.hero {
-  min-height: 100svh;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: flex-start;
-  padding: 120px 40px 80px;
-  position: relative;
-  overflow: hidden;
-  background: #fff;
+.hero{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:100px 40px 80px;
+  position:relative;overflow:hidden;
+  background:#fff;
+  gap:60px;
 }
 
-/* Gradient mesh — Stripe style */
-.hero__mesh {
-  position: absolute;
-  top: 0; right: -60px;
-  width: 65%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero__mesh svg {
-  width: 100%; height: 100%;
-  position: absolute; top: 0; left: 0;
-}
-/* Animated gradient blobs */
-.blob1 {
-  position: absolute;
-  width: 520px; height: 520px;
-  top: -60px; right: 80px;
-  background: radial-gradient(ellipse, rgba(99,102,241,0.55) 0%, transparent 70%);
-  filter: blur(60px);
-  animation: float1 8s ease-in-out infinite;
-}
-.blob2 {
-  position: absolute;
-  width: 480px; height: 480px;
-  top: 120px; right: -40px;
-  background: radial-gradient(ellipse, rgba(236,72,153,0.45) 0%, transparent 70%);
-  filter: blur(55px);
-  animation: float2 10s ease-in-out infinite;
-}
-.blob3 {
-  position: absolute;
-  width: 440px; height: 440px;
-  top: 280px; right: 160px;
-  background: radial-gradient(ellipse, rgba(249,115,22,0.4) 0%, transparent 70%);
-  filter: blur(65px);
-  animation: float3 12s ease-in-out infinite;
-}
-.blob4 {
-  position: absolute;
-  width: 360px; height: 360px;
-  top: 60px; right: 240px;
-  background: radial-gradient(ellipse, rgba(139,92,246,0.4) 0%, transparent 70%);
-  filter: blur(50px);
-  animation: float1 9s ease-in-out infinite reverse;
-}
-.blob5 {
-  position: absolute;
-  width: 300px; height: 300px;
-  bottom: 40px; right: 60px;
-  background: radial-gradient(ellipse, rgba(6,182,212,0.35) 0%, transparent 70%);
-  filter: blur(55px);
-  animation: float2 11s ease-in-out infinite reverse;
-}
+.hero__left{position:relative;z-index:5;}
+.hero__right{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;}
 
-@keyframes float1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(-30px,20px) scale(1.05); }
-  66% { transform: translate(20px,-15px) scale(0.95); }
-}
-@keyframes float2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  40% { transform: translate(25px,30px) scale(1.08); }
-  70% { transform: translate(-20px,-20px) scale(0.97); }
-}
-@keyframes float3 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(-15px,25px) scale(1.04); }
-}
+/* Gradient blobs only on right side now, contained */
+.blob1{position:absolute;width:500px;height:500px;top:-80px;right:-60px;background:radial-gradient(ellipse,rgba(108,71,255,0.5) 0%,transparent 70%);filter:blur(55px);animation:float1 8s ease-in-out infinite;pointer-events:none;}
+.blob2{position:absolute;width:420px;height:420px;top:80px;right:60px;background:radial-gradient(ellipse,rgba(255,77,109,0.4) 0%,transparent 70%);filter:blur(50px);animation:float2 10s ease-in-out infinite;pointer-events:none;}
+.blob3{position:absolute;width:380px;height:380px;top:240px;right:-20px;background:radial-gradient(ellipse,rgba(245,200,66,0.35) 0%,transparent 70%);filter:blur(60px);animation:float3 12s ease-in-out infinite;pointer-events:none;}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(-20px,15px) scale(1.05);}66%{transform:translate(15px,-12px) scale(0.95);}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1);}40%{transform:translate(20px,25px) scale(1.07);}70%{transform:translate(-15px,-18px) scale(0.97);}}
+@keyframes float3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-12px,20px) scale(1.04);}}
 
-/* White fade on left edge of mesh */
-.hero__mesh::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 200px;
-  background: linear-gradient(to right, #ffffff, transparent);
-  z-index: 2;
+/* Hero right panel — stat card */
+.hero__panel{
+  background:rgba(10,10,15,0.04);
+  border:1.5px solid rgba(10,10,15,0.08);
+  border-radius:24px;
+  padding:40px;
+  width:100%;
+  max-width:420px;
+  backdrop-filter:blur(8px);
+  position:relative;
+  overflow:hidden;
 }
-/* Bottom fade */
-.hero__mesh::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 120px;
-  background: linear-gradient(to top, #ffffff, transparent);
-  z-index: 2;
+.hero__panel::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(108,71,255,0.06) 0%,rgba(255,77,109,0.04) 100%);
+  border-radius:24px;
 }
+.hero__panel-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:28px;position:relative;}
+.hero__panel-stat{position:relative;margin-bottom:20px;}
+.hero__panel-stat-val{font-family:var(--sans);font-size:2.8rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);line-height:1;}
+.hero__panel-stat-val span{font-size:1.1rem;font-weight:500;color:var(--mid);letter-spacing:-0.01em;margin-left:4px;}
+.hero__panel-stat-label{font-size:0.8rem;color:var(--mid);margin-top:4px;}
+.hero__panel-divider{height:1px;background:var(--rule);margin:24px 0;}
+.hero__panel-quote{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--mid);line-height:1.6;position:relative;}
+.hero__panel-quote::before{content:'"';font-size:3rem;color:var(--rule);font-family:var(--serif);position:absolute;top:-10px;left:-8px;line-height:1;}
+.hero__panel-quote p{padding-left:28px;position:relative;z-index:1;}
 
-/* Stat ticker — like Stripe's GDP counter */
-.hero__ticker {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--soft);
-  letter-spacing: 0.01em;
-  margin-bottom: 36px;
-  position: relative; z-index: 5;
-  display: flex; align-items: center; gap: 8px;
+.hero__ticker{
+  font-size:0.75rem;font-weight:600;color:var(--soft);
+  letter-spacing:0.01em;margin-bottom:32px;
+  display:flex;align-items:center;gap:8px;
 }
-.hero__ticker-live {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
-  animation: pulse-green 2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-@keyframes pulse-green {
-  0%,100% { opacity:1; box-shadow: 0 0 6px #22c55e; }
-  50% { opacity:0.5; box-shadow: 0 0 2px #22c55e; }
-}
+.hero__ticker-live{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pulse-green 2s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse-green{0%,100%{opacity:1;box-shadow:0 0 6px #22c55e;}50%{opacity:0.5;box-shadow:0 0 2px #22c55e;}}
 
-.hero__headline {
-  font-family: var(--sans);
-  font-size: clamp(2.8rem, 6.5vw, 6rem);
-  font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.04em;
-  color: var(--ink);
-  max-width: 700px;
-  margin-bottom: 28px;
-  position: relative; z-index: 5;
+.hero__headline{
+  font-family:var(--sans);
+  font-size:clamp(2.6rem,5.5vw,5.2rem);
+  font-weight:800;line-height:1.0;
+  letter-spacing:-0.04em;
+  color:var(--ink);
+  max-width:600px;
+  margin-bottom:24px;
 }
-.hero__headline .accent {
-  /* Gradient text — like Stripe's colored headline words */
-  background: linear-gradient(135deg, var(--c1) 0%, var(--c3) 50%, var(--c4) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero__headline .accent{
+  background:linear-gradient(135deg,var(--violet) 0%,var(--rose) 50%,var(--gold-2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero__sub {
-  font-size: 1.1rem; font-weight: 400;
-  color: var(--mid);
-  max-width: 460px;
-  margin-bottom: 48px;
-  line-height: 1.75;
-  position: relative; z-index: 5;
-}
-.hero__actions {
-  display: flex; gap: 12px; flex-wrap: wrap;
-  position: relative; z-index: 5;
-  margin-bottom: 72px;
-}
-.btn--primary-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  color: #fff; padding: 14px 30px; border-radius: 100px;
-  font-weight: 600; font-size: 0.9rem;
-  border: none;
-  transition: all 0.22s var(--ease);
-  box-shadow: 0 2px 16px rgba(79,70,229,0.3);
-}
-.btn--primary-gradient:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(79,70,229,0.45);
-}
-.btn--outline-dark {
-  background: transparent; color: var(--ink);
-  border: 1.5px solid #d4d4d8; padding: 14px 30px; border-radius: 100px;
-  font-weight: 500; font-size: 0.9rem;
-  transition: all 0.22s;
-}
-.btn--outline-dark:hover { border-color: var(--ink-3); background: var(--paper); }
-.hero__proof {
-  display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
-  position: relative; z-index: 5;
-}
-.hero__proof-item {
-  font-size: 0.82rem; color: var(--soft);
-  display: flex; align-items: center; gap: 6px;
-}
-.hero__proof-item strong { color: var(--ink-3); font-weight: 600; }
-.hero__proof-sep { width: 1px; height: 14px; background: var(--rule); }
+.hero__sub{font-size:1.05rem;font-weight:400;color:var(--mid);max-width:440px;margin-bottom:40px;line-height:1.75;}
+.hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
 
-/* Scroll line */
-.hero__scroll {
-  position: absolute; bottom: 36px; left: 40px;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  z-index: 5;
-  animation: bob 2.5s ease-in-out infinite;
-}
-@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
-.hero__scroll span { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
-.hero__scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--soft), transparent); }
+.hero__proof{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.hero__proof-item{font-size:0.8rem;color:var(--soft);display:flex;align-items:center;gap:6px;}
+.hero__proof-item strong{color:var(--ink-3);font-weight:600;}
+.hero__proof-sep{width:1px;height:14px;background:var(--rule);}
 
 /* ─── MARQUEE ─── */
-.marquee-strip { background: var(--ink); padding: 16px 0; overflow: hidden; display: flex; }
-.marquee-track { display: flex; gap: 56px; white-space: nowrap; animation: marquee 26s linear infinite; }
-.marquee-track--clone { animation-delay: -13s; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
-.marquee-item {
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3);
-  display: flex; align-items: center; gap: 56px;
-}
-.marquee-item::after { content: '—'; color: rgba(255,255,255,0.12); }
+.marquee-strip{background:var(--ink);padding:16px 0;overflow:hidden;display:flex;}
+.marquee-track{display:flex;gap:56px;white-space:nowrap;animation:marquee 26s linear infinite;}
+.marquee-track--clone{animation-delay:-13s;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+.marquee-item{font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:56px;}
+.marquee-item::after{content:'—';color:rgba(255,255,255,0.12);}
 
 /* ─── SECTION BASE ─── */
-.section { padding: 120px 0; }
-.section--paper { background: var(--paper); }
-.section--ink { background: var(--ink); color: var(--white); }
-.section--navy { background: #0f172a; color: var(--white); }
+.section{padding:100px 0;}
+.section--paper{background:var(--paper);}
+.section--ink{background:var(--ink);color:var(--white);}
+.section--navy{background:#07091a;color:var(--white);}
 
-.section__eyebrow {
-  display: inline-block;
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--soft);
-  margin-bottom: 18px;
-}
-.section--ink .section__eyebrow,
-.section--navy .section__eyebrow { color: rgba(255,255,255,0.35); }
+.section__eyebrow{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;}
+.section--ink .section__eyebrow,.section--navy .section__eyebrow{color:rgba(255,255,255,0.3);}
 
-.section__heading {
-  font-family: var(--sans);
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 800; line-height: 1.05;
-  letter-spacing: -0.035em;
-  max-width: 680px;
-}
-.section__heading em {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--soft);
-}
-.section--ink .section__heading em,
-.section--navy .section__heading em { color: rgba(255,255,255,0.4); }
+.section__heading{font-family:var(--sans);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;max-width:680px;}
+.section__heading em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--soft);}
+.section--ink .section__heading em,.section--navy .section__heading em{color:rgba(255,255,255,0.35);}
+.section__body{font-size:1rem;color:var(--mid);line-height:1.8;max-width:500px;margin-top:16px;}
+.section--ink .section__body{color:rgba(255,255,255,0.45);}
+.divider{height:1px;background:var(--rule);}
 
-.section__body { font-size: 1rem; color: var(--mid); line-height: 1.8; max-width: 500px; margin-top: 18px; }
-.section--ink .section__body { color: rgba(255,255,255,0.45); }
-.divider { height: 1px; background: var(--rule); }
+/* ─── PROBLEM / STORY ─── */
+.problem{padding:100px 0 60px;}
+.problem__grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.problem__left{}
+.problem__eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;}
+.problem__statement{
+  font-family:var(--sans);
+  font-size:clamp(1.7rem,3.2vw,2.7rem);
+  font-weight:700;line-height:1.2;letter-spacing:-0.03em;
+  color:var(--ink-2);
+}
+.problem__statement strong{color:var(--ink);}
+.problem__statement em{font-family:var(--serif);font-style:italic;color:var(--mid);font-weight:400;}
+.problem__note{margin-top:28px;font-size:0.92rem;color:var(--soft);max-width:420px;line-height:1.8;}
+.problem__right{}
+.problem__cards{display:flex;flex-direction:column;gap:16px;}
+.problem__card{
+  background:var(--paper);
+  border:1.5px solid var(--rule);
+  border-radius:var(--r-lg);
+  padding:24px 28px;
+  display:flex;gap:16px;align-items:flex-start;
+  transition:border-color 0.3s,box-shadow 0.3s;
+}
+.problem__card:hover{border-color:#c4c4d4;box-shadow:0 8px 32px rgba(10,10,15,0.06);}
+.problem__card-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+.problem__card-title{font-weight:700;font-size:0.9rem;color:var(--ink);margin-bottom:4px;}
+.problem__card-desc{font-size:0.83rem;color:var(--mid);line-height:1.6;}
 
-/* ─── PROBLEM ─── */
-.problem { padding: 120px 0 80px; }
-.problem__statement {
-  font-family: var(--sans);
-  font-size: clamp(1.7rem, 3.5vw, 2.9rem);
-  font-weight: 700; line-height: 1.2;
-  letter-spacing: -0.03em; color: var(--ink-2); max-width: 820px;
+/* ─── JOURNEY / PROGRAMS ─── */
+.journey{padding:100px 0;}
+.journey__stages{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+  margin-top:56px;
 }
-.problem__statement strong { color: var(--ink); }
-.problem__statement em { font-family: var(--serif); font-style: italic; color: var(--mid); font-weight: 400; }
-.problem__note { margin-top: 32px; font-size: 0.9rem; color: var(--soft); max-width: 480px; line-height: 1.75; }
 
-/* ─── JOURNEY ─── */
-.journey { padding: 120px 0; background: var(--white); }
-.journey__flow {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  align-items: start; gap: 0; margin-top: 64px;
+.stage{
+  border-radius:var(--r-xl);
+  padding:36px 32px;
+  border:1.5px solid var(--rule);
+  background:var(--white);
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.3s,box-shadow 0.3s,transform 0.3s;
 }
-.journey__arrow {
-  display: flex; align-items: center; justify-content: center;
-  padding-top: 30px; color: var(--rule); font-size: 1.1rem; flex-shrink: 0; width: 48px;
+.stage:hover{box-shadow:0 12px 48px rgba(10,10,15,0.07);transform:translateY(-4px);}
+.stage--featured{
+  background:linear-gradient(145deg,#07091a 0%,#14103a 100%);
+  border-color:transparent;
+  color:var(--white);
 }
-.journey__step {
-  background: var(--white);
-  border: 1.5px solid var(--rule);
-  border-radius: var(--r-xl); padding: 36px 32px;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+.stage--featured:hover{box-shadow:0 20px 60px rgba(7,9,26,0.45);}
+.stage__tag{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
+.stage--featured .stage__tag{color:rgba(255,255,255,0.3);}
+.stage__icon{
+  width:44px;height:44px;border-radius:var(--r-sm);
+  background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
 }
-.journey__step:hover { border-color: #a1a1aa; box-shadow: 0 12px 48px rgba(9,9,11,0.07); transform: translateY(-4px); }
-.journey__step--featured {
-  background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 100%);
-  border-color: transparent;
-  color: var(--white);
+.stage--featured .stage__icon{background:rgba(255,255,255,0.08);}
+.stage__icon svg{width:20px;height:20px;}
+.stage__name{font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;margin-bottom:12px;}
+.stage__duration{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(108,71,255,0.1);color:var(--violet);
+  font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  border-radius:100px;padding:4px 12px;margin-bottom:16px;
 }
-.journey__step--featured:hover { box-shadow: 0 20px 60px rgba(15,23,42,0.4); }
-.journey__step-num {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--soft); margin-bottom: 20px;
+.stage--featured .stage__duration{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);}
+.stage__desc{font-size:0.87rem;color:var(--mid);line-height:1.7;}
+.stage--featured .stage__desc{color:rgba(255,255,255,0.55);}
+.stage__badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,200,150,0.12);color:var(--emerald);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
+  border-radius:100px;padding:5px 14px;margin-top:20px;
+  border:1px solid rgba(0,200,150,0.2);
 }
-.journey__step--featured .journey__step-num { color: rgba(255,255,255,0.35); }
-.journey__step-icon {
-  width: 40px; height: 40px; border-radius: var(--r-sm);
-  background: var(--paper);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.journey__step--featured .journey__step-icon { background: rgba(255,255,255,0.1); }
-/* SVG icons inside step */
-.step-svg { width: 18px; height: 18px; }
-.journey__step-title {
-  font-family: var(--sans); font-size: 1.2rem; font-weight: 700;
-  letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 12px; color: var(--ink);
-}
-.journey__step--featured .journey__step-title { color: var(--white); }
-.journey__step-desc { font-size: 0.875rem; color: var(--mid); line-height: 1.68; }
-.journey__step--featured .journey__step-desc { color: rgba(255,255,255,0.5); }
-.journey__step-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 20px; padding: 5px 12px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 100px;
-  font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.7);
-  letter-spacing: 0.04em;
-}
-.badge-dot { width: 5px; height: 5px; background: #4ade80; border-radius: 50%; }
+.stage__badge-dot{width:5px;height:5px;border-radius:50%;background:var(--emerald);animation:pulse-green 2s infinite;}
 
-/* ─── COHORT ─── */
-.cohort { padding: 140px 0; background: var(--ink); color: var(--white); }
-.cohort__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.cohort__label {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 24px;
+/* ─── COHORT DEEP-DIVE ─── */
+.cohort{padding:100px 0;background:var(--ink);}
+.cohort__inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.cohort__left{}
+.cohort__eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet-2);margin-bottom:16px;}
+.cohort__heading{
+  font-family:var(--sans);
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:800;line-height:1.05;letter-spacing:-0.03em;
+  color:var(--white);margin-bottom:20px;
 }
-.cohort__heading {
-  font-family: var(--sans); font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 800; line-height: 1.04; letter-spacing: -0.035em;
-  color: var(--white); margin-bottom: 24px;
+.cohort__heading em{font-family:var(--serif);font-style:italic;font-weight:400;color:rgba(255,255,255,0.35);}
+.cohort__body{font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:32px;}
+.cohort__features{display:flex;flex-direction:column;gap:20px;}
+.cohort__feature{display:flex;gap:16px;align-items:flex-start;}
+.cohort__feature-mark{
+  width:36px;height:36px;border-radius:var(--r-sm);flex-shrink:0;
+  background:rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:center;
+  margin-top:2px;
 }
-.cohort__heading em { font-family: var(--serif); font-style: italic; font-weight: 400; color: rgba(255,255,255,0.4); }
-.cohort__body { font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 40px; max-width: 440px; }
-.cohort__features { display: flex; flex-direction: column; gap: 14px; }
-.cohort__feature {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 18px 20px; background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: var(--r-md);
-  transition: border-color 0.25s, background 0.25s;
+.cohort__feature-mark svg{width:15px;height:15px;fill:none;stroke:rgba(255,255,255,0.4);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.cohort__feature-title{font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:4px;}
+.cohort__feature-desc{font-size:0.83rem;color:rgba(255,255,255,0.4);line-height:1.6;}
+
+/* Cohort Card */
+.cohort__card{
+  background:linear-gradient(145deg,#0d0f1f 0%,#12103a 100%);
+  border:1px solid rgba(108,71,255,0.25);
+  border-radius:24px;padding:40px;
+  position:relative;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06);
 }
-.cohort__feature:hover { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.07); }
-.cohort__feature-mark {
-  width: 34px; height: 34px; flex-shrink: 0;
-  border-radius: var(--r-sm);
-  background: rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center;
+.cohort__card::before{
+  content:'';position:absolute;
+  top:-80px;right:-80px;
+  width:280px;height:280px;
+  background:radial-gradient(ellipse,rgba(108,71,255,0.25) 0%,transparent 70%);
+  pointer-events:none;
 }
-.cohort__feature-mark svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.cohort__feature-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 3px; letter-spacing: -0.01em; }
-.cohort__feature-text p { font-size: 0.84rem; color: rgba(255,255,255,0.38); line-height: 1.55; }
-/* Card */
-.cohort__card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--r-xl); padding: 40px;
-  display: flex; flex-direction: column; gap: 28px;
+.cohort__card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
+.cohort__card-logo{font-weight:800;font-size:0.95rem;color:var(--white);letter-spacing:-0.02em;}
+.cohort__card-badge{
+  background:rgba(0,200,150,0.12);
+  border:1px solid rgba(0,200,150,0.25);
+  color:var(--emerald);
+  font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
+  border-radius:100px;padding:5px 14px;
 }
-.cohort__card-top { display: flex; align-items: center; justify-content: space-between; }
-.cohort__card-logo { font-family: var(--sans); font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: -0.01em; }
-.cohort__card-badge {
-  padding: 4px 12px; background: rgba(74,222,128,0.14);
-  border: 1px solid rgba(74,222,128,0.28);
-  border-radius: 100px; font-size: 0.72rem; font-weight: 600; color: #4ade80;
+.cohort__stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+.cohort__stat{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:var(--r-md);padding:20px;
+  transition:background 0.3s;
 }
-.cohort__stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.cohort__stat { padding: 20px; background: rgba(255,255,255,0.04); border-radius: var(--r-md); border: 1px solid rgba(255,255,255,0.06); }
-.cohort__stat-val { font-family: var(--sans); font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 6px; }
-.cohort__stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.32); }
-.cohort__card-divider { height: 1px; background: rgba(255,255,255,0.07); }
-.cohort__card-cta { display: flex; flex-direction: column; gap: 12px; }
-.cohort__card-cta p { font-size: 0.78rem; color: rgba(255,255,255,0.32); text-align: center; }
-.btn--white { background: var(--white); color: var(--ink); width: 100%; padding: 14px; font-size: 0.9rem; font-weight: 600; border-radius: 100px; transition: all 0.22s; }
-.btn--white:hover { background: var(--paper); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(255,255,255,0.12); }
+.cohort__stat:hover{background:rgba(255,255,255,0.07);}
+.cohort__stat-val{font-size:2rem;font-weight:800;letter-spacing:-0.04em;color:var(--white);line-height:1;}
+.cohort__stat-label{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:6px;}
+.cohort__card-divider{height:1px;background:rgba(255,255,255,0.08);margin-bottom:24px;}
+.cohort__cta-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;padding:16px;
+  background:var(--white);color:var(--ink);
+  font-family:var(--sans);font-weight:700;font-size:0.9rem;
+  border-radius:100px;cursor:pointer;
+  transition:all 0.22s;border:none;
+}
+.cohort__cta-btn:hover{background:var(--paper);transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,255,255,0.15);}
+.cohort__cta-note{text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:12px;}
 
 /* ─── OUTCOMES ─── */
-.outcomes { padding: 120px 0; background: var(--white); }
-.outcomes__grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5px; background: var(--rule);
-  border: 1.5px solid var(--rule); border-radius: var(--r-lg);
-  overflow: hidden; margin-top: 64px;
-}
-.outcome__cell { background: var(--white); padding: 40px 36px; transition: background 0.22s; }
-.outcome__cell:hover { background: var(--paper); }
-.outcome__num { font-family: var(--sans); font-size: 2.8rem; font-weight: 800; letter-spacing: -0.05em; color: var(--ink); line-height: 1; margin-bottom: 10px; }
-.outcome__label { font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
-.outcome__desc { font-size: 0.84rem; color: var(--soft); line-height: 1.65; }
+.outcomes{padding:100px 0;}
+.outcomes__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-xl);overflow:hidden;margin-top:56px;}
+.outcome__cell{background:var(--white);padding:36px;transition:background 0.3s;}
+.outcome__cell:hover{background:var(--paper);}
+.outcome__num{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);margin-bottom:16px;}
+.outcome__label{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:8px;}
+.outcome__desc{font-size:0.83rem;color:var(--mid);line-height:1.65;}
 
 /* ─── PROCESS ─── */
-.process { padding: 120px 0; background: var(--paper); }
-.process__steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 64px; }
-.process__step { display: flex; flex-direction: column; }
-.process__step-num {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--soft); margin-bottom: 20px;
-  padding-bottom: 20px; border-bottom: 1.5px solid var(--rule);
-}
-.process__step-title { font-family: var(--sans); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
-.process__step-body { font-size: 0.875rem; color: var(--mid); line-height: 1.68; }
+.process{padding:100px 0;background:var(--paper);}
+.process__steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px;}
+.process__step{padding:28px 0;}
+.process__step-num{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);margin-bottom:16px;}
+.process__step-title{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:8px;}
+.process__step-body{font-size:0.83rem;color:var(--mid);line-height:1.65;}
 
-/* ─── REASONS ─── */
-.reasons { padding: 120px 0; background: var(--white); }
-.reasons__list { margin-top: 64px; display: flex; flex-direction: column; }
-.reasons__item {
-  display: grid; grid-template-columns: 56px 1fr 1fr;
-  gap: 32px; align-items: start;
-  padding: 32px 0; border-bottom: 1px solid var(--rule);
-  transition: background 0.2s; cursor: default;
-}
-.reasons__item:first-child { border-top: 1px solid var(--rule); }
-.reasons__item-num { font-size: 0.78rem; font-weight: 600; color: var(--soft); letter-spacing: 0.06em; padding-top: 2px; }
-.reasons__item-title { font-family: var(--sans); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); line-height: 1.25; }
-.reasons__item-body { font-size: 0.9rem; color: var(--mid); line-height: 1.75; }
+/* ─── WHY FINVERZE ─── */
+.reasons{padding:100px 0;}
+.reasons__list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-xl);overflow:hidden;margin-top:56px;}
+.reasons__item{background:var(--white);padding:40px;transition:background 0.3s;}
+.reasons__item:hover{background:var(--paper);}
+.reasons__item:last-child:nth-child(odd){grid-column:1/-1;}
+.reasons__item-num{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:14px;}
+.reasons__item-title{font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:8px;}
+.reasons__item-body{font-size:0.85rem;color:var(--mid);line-height:1.7;}
 
 /* ─── BOOK / CONTACT ─── */
-.book { padding: 120px 0; background: var(--white); }
-.book__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.book__heading { font-family: var(--sans); font-size: clamp(2rem, 3.5vw, 2.9rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; color: var(--ink); margin-bottom: 20px; }
-.book__subhead { font-size: 0.95rem; color: var(--mid); line-height: 1.75; margin-bottom: 36px; }
-.book__contact { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--mid); }
-.book__contact a { color: var(--c1); font-weight: 600; }
-.book__contact a:hover { text-decoration: underline; }
-.form { background: var(--white); border: 1.5px solid var(--rule); border-radius: var(--r-xl); padding: 40px; box-shadow: 0 4px 40px rgba(9,9,11,0.06); }
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form__group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.form__label { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0.01em; }
-.form__input, .form__select {
-  width: 100%; padding: 12px 16px;
-  background: var(--paper); border: 1.5px solid var(--rule);
-  border-radius: var(--r-sm); font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
-  outline: none; appearance: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+.book{padding:100px 0;}
+.book__inner{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:flex-start;}
+.book__heading{font-family:var(--sans);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:16px;}
+.book__subhead{font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:24px;}
+.book__contact{font-size:0.85rem;color:var(--mid);}
+.book__contact a{color:var(--violet);font-weight:600;}
+
+/* Form */
+.form{background:var(--paper);border:1.5px solid var(--rule);border-radius:var(--r-xl);padding:40px;}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form__group{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.form__group:last-child{margin-bottom:0;}
+.form__label{font-size:0.78rem;font-weight:600;color:var(--ink-3);letter-spacing:0.01em;}
+.form__input,.form__select{
+  width:100%;padding:12px 16px;
+  background:var(--white);
+  border:1.5px solid var(--rule);border-radius:var(--r-md);
+  font-family:var(--sans);font-size:0.87rem;color:var(--ink);
+  transition:border-color 0.22s,box-shadow 0.22s;outline:none;
+  appearance:none;-webkit-appearance:none;
 }
-.form__input::placeholder { color: var(--soft); }
-.form__input:focus, .form__select:focus { border-color: var(--c1); box-shadow: 0 0 0 3px rgba(99,102,241,0.1); background: var(--white); }
-.form__select option { background: var(--white); }
-.form__submit {
-  width: 100%; margin-top: 8px;
-  background: var(--ink); color: var(--white);
-  padding: 14px; font-size: 0.9rem; font-weight: 600;
-  border-radius: 100px; border: none; cursor: pointer;
-  transition: all 0.22s var(--ease); font-family: var(--sans);
+.form__input::placeholder{color:var(--soft);}
+.form__input:focus,.form__select:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(108,71,255,0.12);}
+.form__select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239d9db5' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:40px;cursor:pointer;}
+.form__submit{
+  width:100%;padding:14px;margin-top:4px;
+  background:var(--ink);color:var(--white);
+  font-family:var(--sans);font-weight:700;font-size:0.9rem;
+  border-radius:100px;border:none;cursor:pointer;
+  transition:all 0.22s;
 }
-.form__submit:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(9,9,11,0.18); }
-.form__success { display: none; text-align: center; padding: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--r-md); font-size: 0.9rem; font-weight: 500; color: #166534; margin-top: 12px; }
+.form__submit:hover{background:var(--ink-2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,10,15,0.2);}
+.form__success{display:none;background:rgba(0,200,150,0.08);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r-md);padding:16px;text-align:center;font-size:0.85rem;font-weight:500;color:var(--emerald);margin-top:12px;}
 
 /* ─── CTA BANNER ─── */
-.cta-banner {
-  padding: 120px 0;
-  background: #0f172a;
-  text-align: center;
-  position: relative; overflow: hidden;
+.cta-banner{
+  padding:100px 0;
+  background:linear-gradient(135deg,#07091a 0%,#14103a 100%);
+  position:relative;overflow:hidden;
+  text-align:center;
 }
-/* Subtle gradient accent in CTA */
-.cta-banner::after {
-  content: '';
-  position: absolute;
-  width: 700px; height: 400px;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(99,102,241,0.2) 0%, rgba(236,72,153,0.12) 50%, transparent 80%);
-  pointer-events: none;
-}
-.cta-banner__heading {
-  font-family: var(--sans); font-size: clamp(2.4rem, 5vw, 4.2rem);
-  font-weight: 800; line-height: 1.06; letter-spacing: -0.04em;
-  color: var(--white); margin-bottom: 20px; position: relative; z-index: 1;
-}
-.cta-banner__heading em { font-family: var(--serif); font-style: italic; font-weight: 400; color: rgba(255,255,255,0.45); }
-.cta-banner__sub { font-size: 1rem; color: rgba(255,255,255,0.45); margin-bottom: 44px; position: relative; z-index: 1; }
-.cta-banner__actions { display: flex; gap: 12px; justify-content: center; position: relative; z-index: 1; }
+.cta-banner::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(108,71,255,0.3) 0%,transparent 70%);pointer-events:none;}
+.cta-banner__heading{font-family:var(--sans);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--white);line-height:1.0;margin-bottom:16px;position:relative;}
+.cta-banner__heading em{font-family:var(--serif);font-style:italic;font-weight:400;color:rgba(255,255,255,0.4);}
+.cta-banner__sub{font-size:1rem;color:rgba(255,255,255,0.45);margin-bottom:40px;position:relative;}
+.cta-banner__actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
 
 /* ─── FOOTER ─── */
-.footer { background: var(--ink); padding: 56px 0 40px; color: rgba(255,255,255,0.4); }
-.footer__inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px; }
-.footer__brand-name { font-family: var(--sans); font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 12px; letter-spacing: -0.01em; }
-.footer__brand-desc { font-size: 0.84rem; line-height: 1.68; max-width: 260px; }
-.footer__col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 16px; }
-.footer__links { display: flex; flex-direction: column; gap: 10px; }
-.footer__links a { font-size: 0.875rem; color: rgba(255,255,255,0.4); transition: color 0.2s; }
-.footer__links a:hover { color: var(--white); }
-.footer__bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; }
+.footer{background:var(--ink);padding:60px 0 32px;}
+.footer__inner{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.footer__brand-name{font-weight:800;font-size:1.1rem;color:var(--white);letter-spacing:-0.02em;margin-bottom:12px;}
+.footer__brand-desc{font-size:0.83rem;color:rgba(255,255,255,0.3);line-height:1.7;max-width:260px;}
+.footer__col-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;}
+.footer__links{display:flex;flex-direction:column;gap:10px;}
+.footer__links a{font-size:0.85rem;color:rgba(255,255,255,0.45);transition:color 0.2s;}
+.footer__links a:hover{color:var(--white);}
+.footer__bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:0.78rem;color:rgba(255,255,255,0.2);}
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
-  .journey__flow { grid-template-columns: 1fr; gap: 16px; }
-  .journey__arrow { display: none; }
-  .cohort__grid { grid-template-columns: 1fr; gap: 48px; }
-  .outcomes__grid { grid-template-columns: repeat(2,1fr); }
-  .process__steps { grid-template-columns: repeat(2,1fr); }
-  .book__inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero__mesh { width: 55%; right: -40px; }
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;min-height:unset;}
+  .hero__right{justify-content:flex-start;}
+  .hero__panel{max-width:100%;}
+  .blob1,.blob2,.blob3{opacity:0.4;}
+  .problem__grid{grid-template-columns:1fr;gap:40px;}
+  .journey__stages{grid-template-columns:1fr;gap:16px;}
+  .cohort__inner{grid-template-columns:1fr;gap:48px;}
+  .outcomes__grid{grid-template-columns:1fr 1fr;}
+  .process__steps{grid-template-columns:1fr 1fr;gap:24px;}
+  .reasons__list{grid-template-columns:1fr;}
+  .reasons__item:last-child:nth-child(odd){grid-column:auto;}
+  .book__inner{grid-template-columns:1fr;gap:40px;}
+  .form__row{grid-template-columns:1fr;}
+  .footer__inner{grid-template-columns:1fr;gap:32px;}
+  .footer__bottom{flex-direction:column;gap:8px;text-align:center;}
+  .nav__links,.nav__cta{display:none;}
+  .nav__hamburger{display:flex;}
+  .nav{padding:0 24px;}
 }
-@media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .nav { padding: 0 20px; }
-  .nav__links, .nav__cta { display: none; }
-  .nav__hamburger { display: flex; }
-  .hero { padding: 100px 20px 80px; align-items: flex-start; }
-  .hero__mesh { width: 100%; right: 0; top: 40%; height: 60%; }
-  .hero__mesh::before { display: none; }
-  .hero__headline { font-size: clamp(2.4rem, 9vw, 3.5rem); }
-  .section { padding: 80px 0; }
-  .outcomes__grid { grid-template-columns: 1fr; }
-  .process__steps { grid-template-columns: 1fr; }
-  .reasons__item { grid-template-columns: 1fr; gap: 8px; }
-  .reasons__item-num { display: none; }
-  .footer__inner { grid-template-columns: 1fr; }
-  .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
-  .form__row { grid-template-columns: 1fr; }
-  .cta-banner__actions { flex-direction: column; align-items: center; }
+@media(max-width:600px){
+  .hero__headline{font-size:clamp(2.4rem,10vw,3.8rem);}
+  .outcomes__grid{grid-template-columns:1fr;}
+  .process__steps{grid-template-columns:1fr;}
+  .container{padding:0 20px;}
+  .hero{padding:90px 20px 60px;}
+  .cohort__stats{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
@@ -625,18 +462,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="/" class="nav__logo">Finverze</a>
+  <a href="#" class="nav__logo">Finverze</a>
   <ul class="nav__links">
     <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
     <li><a href="#cohort">The Cohort</a></li>
-    <li><a href="#process">Programs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav__cta">
     <a href="#contact" class="btn btn--ghost">For Colleges</a>
     <a href="#cohort" class="btn btn--solid">Apply Now</a>
   </div>
-  <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -644,187 +481,238 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <!-- MOBILE DRAWER -->
 <div class="nav__drawer" id="drawer">
   <a href="#about" class="drawer-link">About</a>
+  <a href="#programs" class="drawer-link">Programs</a>
   <a href="#cohort" class="drawer-link">The Cohort</a>
-  <a href="#process" class="drawer-link">Programs</a>
   <a href="#contact" class="drawer-link">Contact</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Gradient mesh — right side -->
-  <div class="hero__mesh" aria-hidden="true">
-    <div class="blob1"></div>
-    <div class="blob2"></div>
-    <div class="blob3"></div>
-    <div class="blob4"></div>
-    <div class="blob5"></div>
+  <!-- Gradient blobs contained to right half -->
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="blob3"></div>
+
+  <div class="hero__left">
+    <div class="hero__ticker">
+      <span class="hero__ticker-live"></span>
+      Now accepting campus partners — 2025 cohort
+    </div>
+    <h1 class="hero__headline reveal">
+      The future of<br><span class="accent">student financial</span><br>discipline.
+    </h1>
+    <p class="hero__sub reveal rd1">
+      Programs that build real money habits — not a workshop, a transformation system from first session to lifelong discipline.
+    </p>
+    <div class="hero__actions reveal rd2">
+      <a href="#cohort" class="btn btn--violet btn--large">Explore The Cohort</a>
+      <a href="#contact" class="btn btn--ghost btn--large">Partner With Us</a>
+    </div>
+    <div class="hero__proof reveal rd3">
+      <span class="hero__proof-item"><strong>Campus-first</strong> delivery</span>
+      <span class="hero__proof-sep"></span>
+      <span class="hero__proof-item"><strong>Structured</strong> curriculum</span>
+      <span class="hero__proof-sep"></span>
+      <span class="hero__proof-item"><strong>Habit-driven</strong> outcomes</span>
+    </div>
   </div>
 
-  <div class="hero__ticker reveal">
-    <span class="hero__ticker-live"></span>
-    Now accepting campus partners — 2025 cohort
-  </div>
-
-  <h1 class="hero__headline reveal reveal-delay-1">
-    Financial<br>infrastructure<br>to grow <span class="accent">your students.</span>
-  </h1>
-  <p class="hero__sub reveal reveal-delay-2">
-    Structured programs that build real money habits in students — not a workshop, a transformation system from first session to lifelong discipline.
-  </p>
-  <div class="hero__actions reveal reveal-delay-3">
-    <a href="#cohort" class="btn btn--primary-gradient">Explore The Cohort</a>
-    <a href="#contact" class="btn btn--outline-dark">Partner With Us</a>
-  </div>
-  <div class="hero__proof reveal reveal-delay-4">
-    <span class="hero__proof-item"><strong>Campus-first</strong> delivery</span>
-    <span class="hero__proof-sep"></span>
-    <span class="hero__proof-item"><strong>Structured</strong> curriculum</span>
-    <span class="hero__proof-sep"></span>
-    <span class="hero__proof-item"><strong>Habit-driven</strong> outcomes</span>
-  </div>
-  <div class="hero__scroll">
-    <span>Scroll</span>
-    <div class="hero__scroll-line"></div>
+  <div class="hero__right reveal rd2">
+    <div class="hero__panel">
+      <div class="hero__panel-label">The Finverze Cohort — By the numbers</div>
+      <div class="hero__panel-stat">
+        <div class="hero__panel-stat-val">30 <span>seats / batch</span></div>
+        <div class="hero__panel-stat-label">Selective intake, every cohort</div>
+      </div>
+      <div class="hero__panel-divider"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div>
+          <div style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);">7<span style="font-size:0.9rem;color:var(--mid);font-weight:500;"> days</span></div>
+          <div style="font-size:0.75rem;color:var(--mid);margin-top:4px;">Cohort duration</div>
+        </div>
+        <div>
+          <div style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);">Live</div>
+          <div style="font-size:0.75rem;color:var(--mid);margin-top:4px;">Session format</div>
+        </div>
+      </div>
+      <div class="hero__panel-divider"></div>
+      <div class="hero__panel-quote">
+        <p>Schools teach formulas for exams. Nobody teaches how money actually works.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
-    <span class="marquee-item">Financial Discipline</span>
-    <span class="marquee-item">Student Outcomes</span>
-    <span class="marquee-item">Campus Programs</span>
-    <span class="marquee-item">Habit Building</span>
-    <span class="marquee-item">Future-Ready Students</span>
     <span class="marquee-item">Financial Awareness</span>
-    <span class="marquee-item">Real-World Skills</span>
-    <span class="marquee-item">Financial Discipline</span>
-    <span class="marquee-item">Student Outcomes</span>
-    <span class="marquee-item">Campus Programs</span>
     <span class="marquee-item">Habit Building</span>
-    <span class="marquee-item">Future-Ready Students</span>
+    <span class="marquee-item">The Finverze Cohort</span>
+    <span class="marquee-item">Campus Programs</span>
+    <span class="marquee-item">Student Transformation</span>
+    <span class="marquee-item">Money Discipline</span>
+    <span class="marquee-item">Finverze Advanced</span>
+  </div>
+  <div class="marquee-track marquee-track--clone" aria-hidden="true">
+    <span class="marquee-item">Financial Awareness</span>
+    <span class="marquee-item">Habit Building</span>
+    <span class="marquee-item">The Finverze Cohort</span>
+    <span class="marquee-item">Campus Programs</span>
+    <span class="marquee-item">Student Transformation</span>
+    <span class="marquee-item">Money Discipline</span>
+    <span class="marquee-item">Finverze Advanced</span>
   </div>
 </div>
 
-<!-- PROBLEM STATEMENT -->
-<section class="problem section" id="about">
+<!-- THE PROBLEM -->
+<section class="problem" id="about">
   <div class="container">
-    <p class="section__eyebrow reveal">The Problem</p>
-    <p class="problem__statement reveal reveal-delay-1">
-      Students graduate with degrees.<br>
-      <em>Almost none graduate with financial discipline.</em>
-    </p>
-    <p class="problem__note reveal reveal-delay-2">
-      Most financial literacy programs are one-off lectures. Finverze is different — we build systems, habits, and awareness that actually stick.
-    </p>
+    <div class="problem__grid">
+      <div class="problem__left reveal">
+        <div class="problem__eyebrow">The Problem</div>
+        <div class="problem__statement">
+          Students remember formulas<br>for exams.<br>
+          <em>But nobody teaches them<br>how money works.</em>
+        </div>
+        <p class="problem__note">
+          Schools have taught chemistry, history, and calculus for decades. But the one thing every student will deal with for the rest of their life — money — gets zero class time. Finverze fixes that.
+        </p>
+      </div>
+      <div class="problem__right reveal rd2">
+        <div class="problem__cards">
+          <div class="problem__card">
+            <div class="problem__card-icon">📚</div>
+            <div>
+              <div class="problem__card-title">12 years of school</div>
+              <div class="problem__card-desc">Students learn trigonometry, organic chemistry, and essay writing — but not how a bank account, EMI, or savings plan works.</div>
+            </div>
+          </div>
+          <div class="problem__card">
+            <div class="problem__card-icon">💸</div>
+            <div>
+              <div class="problem__card-title">First salary, zero plan</div>
+              <div class="problem__card-desc">Most graduates receive their first paycheck with no idea how to save, invest, or budget. The habits they form in those first months last decades.</div>
+            </div>
+          </div>
+          <div class="problem__card">
+            <div class="problem__card-icon">🔄</div>
+            <div>
+              <div class="problem__card-title">One workshop isn't enough</div>
+              <div class="problem__card-desc">Financial literacy talks create awareness — but not behavior change. Real discipline requires structure, repetition, and accountability.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="divider container"></div>
 
-<!-- JOURNEY -->
+<!-- PROGRAMS / JOURNEY -->
 <section class="journey" id="programs">
   <div class="container">
     <div class="reveal">
       <p class="section__eyebrow">The Journey</p>
-      <h2 class="section__heading">Three stages.<br><em>One transformation.</em></h2>
+      <h2 class="section__heading">1 workshop. 2 programs.<br><em>One transformation.</em></h2>
     </div>
-    <div class="journey__flow">
+    <div class="journey__stages">
 
-      <div class="journey__step reveal reveal-delay-1">
-        <div class="journey__step-num">Stage 01</div>
-        <div class="journey__step-icon">
-          <svg class="step-svg" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="stage reveal rd1">
+        <div class="stage__tag">Every Campus</div>
+        <div class="stage__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
         </div>
-        <div class="journey__step-title">Awareness Session</div>
-        <p class="journey__step-desc">
-          A powerful on-campus session that shifts how students think about money. Designed to spark the conversation and plant the seed of financial discipline.
-        </p>
+        <div class="stage__duration">1 Day · Included</div>
+        <div class="stage__name">Awareness Session</div>
+        <p class="stage__desc">A powerful on-campus workshop that shifts how students think about money. This happens at every campus we partner with — no selection needed. The starting point for every Finverze journey.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;color:var(--mid);background:var(--paper);border-radius:100px;padding:5px 14px;border:1px solid var(--rule);">✦ Standard for all partners</div>
       </div>
 
-      <div class="journey__arrow reveal">→</div>
-
-      <div class="journey__step journey__step--featured reveal reveal-delay-2">
-        <div class="journey__step-num">Stage 02</div>
-        <div class="journey__step-icon">
-          <svg class="step-svg" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <div class="stage stage--featured reveal rd2">
+        <div class="stage__tag">Program 01</div>
+        <div class="stage__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
         </div>
-        <div class="journey__step-title">The Finverze Cohort</div>
-        <p class="journey__step-desc">
-          A selective, intensive program for students serious about building financial discipline. Not a course — a curated cohort experience with accountability and structure.
-        </p>
-        <div class="journey__step-badge">
-          <span class="badge-dot"></span> Selective Intake
+        <div class="stage__duration">7 Days</div>
+        <div class="stage__name">The Finverze Cohort</div>
+        <p class="stage__desc">A selective, intensive program for students serious about building financial discipline. Not a course — a curated cohort experience with accountability, structure, and a peer community.</p>
+        <div class="stage__badge">
+          <span class="stage__badge-dot"></span> Selective Intake
         </div>
       </div>
 
-      <div class="journey__arrow reveal">→</div>
-
-      <div class="journey__step reveal reveal-delay-3">
-        <div class="journey__step-num">Stage 03</div>
-        <div class="journey__step-icon">
-          <svg class="step-svg" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      <div class="stage reveal rd3">
+        <div class="stage__tag">Program 02</div>
+        <div class="stage__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+          </svg>
         </div>
-        <div class="journey__step-title">Finverze Advanced</div>
-        <p class="journey__step-desc">
-          For graduates of The Cohort ready to go deeper — advanced frameworks, real-world financial systems, and long-term habit architecture.
-        </p>
+        <div class="stage__duration">14 Days</div>
+        <div class="stage__name">Finverze Advanced</div>
+        <p class="stage__desc">For graduates of The Cohort ready to go deeper — advanced financial frameworks, real-world systems, and long-term habit architecture that creates lasting change.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- THE COHORT -->
+<!-- THE COHORT DEEP DIVE -->
 <section class="cohort" id="cohort">
   <div class="container">
-    <div class="cohort__grid">
-      <div>
-        <p class="cohort__label reveal">The Finverze Cohort</p>
-        <h2 class="cohort__heading reveal reveal-delay-1">Not a course.<br><em>A selection.</em></h2>
-        <p class="cohort__body reveal reveal-delay-2">
+    <div class="cohort__inner">
+      <div class="cohort__left">
+        <div class="cohort__eyebrow reveal">The Finverze Cohort</div>
+        <h2 class="cohort__heading reveal rd1">Not a course.<br><em>A selection.</em></h2>
+        <p class="cohort__body reveal rd2">
           The Cohort isn't open to everyone. It's a curated experience for students who are ready to commit to real financial discipline — with accountability, structure, and a community that takes it seriously.
         </p>
-        <div class="cohort__features reveal reveal-delay-3">
+        <div class="cohort__features reveal rd3">
           <div class="cohort__feature">
             <div class="cohort__feature-mark">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             </div>
-            <div class="cohort__feature-text">
-              <h4>Structured Curriculum</h4>
-              <p>A clear roadmap — not random content. Every week builds on the last.</p>
+            <div>
+              <div class="cohort__feature-title">Structured Curriculum</div>
+              <div class="cohort__feature-desc">A clear 7-day roadmap — not random content. Every session builds on the last, designed for real behavior change.</div>
             </div>
           </div>
           <div class="cohort__feature">
             <div class="cohort__feature-mark">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div class="cohort__feature-text">
-              <h4>Peer Accountability</h4>
-              <p>A cohort of students who hold each other to the standard.</p>
+            <div>
+              <div class="cohort__feature-title">Peer Accountability</div>
+              <div class="cohort__feature-desc">A cohort of 30 students who hold each other to the standard. You're not learning alone.</div>
             </div>
           </div>
           <div class="cohort__feature">
             <div class="cohort__feature-mark">
               <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <div class="cohort__feature-text">
-              <h4>Habit Architecture</h4>
-              <p>Systems designed to outlast the program — long after the cohort ends.</p>
+            <div>
+              <div class="cohort__feature-title">Habit Architecture</div>
+              <div class="cohort__feature-desc">Systems designed to outlast the program — the discipline you build stays long after the cohort ends.</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
+      <div class="reveal rd2">
         <div class="cohort__card">
           <div class="cohort__card-top">
             <span class="cohort__card-logo">Finverze Cohort</span>
             <span class="cohort__card-badge">Applications Open</span>
           </div>
-          <div class="cohort__stat-row">
+          <div class="cohort__stats">
             <div class="cohort__stat">
-              <div class="cohort__stat-val">8 wks</div>
-              <div class="cohort__stat-label">Program duration</div>
+              <div class="cohort__stat-val">7</div>
+              <div class="cohort__stat-label">Days duration</div>
             </div>
             <div class="cohort__stat">
               <div class="cohort__stat-val">Live</div>
@@ -840,10 +728,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
           <div class="cohort__card-divider"></div>
-          <div class="cohort__card-cta">
-            <a href="#contact" class="btn btn--white">Apply for the Cohort</a>
-            <p>Limited seats. Applications reviewed individually.</p>
-          </div>
+          <button class="cohort__cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Apply for the Cohort →</button>
+          <p class="cohort__cta-note">Limited seats. Applications reviewed individually.</p>
         </div>
       </div>
     </div>
@@ -861,32 +747,32 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="outcome__cell reveal">
         <div class="outcome__num">01</div>
         <div class="outcome__label">Spending Awareness</div>
-        <p class="outcome__desc">Students learn to track where their money goes — and actually change it.</p>
+        <p class="outcome__desc">Students learn to track where their money goes — and actually change the behavior, not just know about it.</p>
       </div>
-      <div class="outcome__cell reveal reveal-delay-1">
+      <div class="outcome__cell reveal rd1">
         <div class="outcome__num">02</div>
         <div class="outcome__label">Saving Discipline</div>
-        <p class="outcome__desc">Not just knowing to save — building the habit that survives the real world.</p>
+        <p class="outcome__desc">Not just knowing to save — building the habit that survives peer pressure, impulsive decisions, and real life.</p>
       </div>
-      <div class="outcome__cell reveal reveal-delay-2">
+      <div class="outcome__cell reveal rd2">
         <div class="outcome__num">03</div>
         <div class="outcome__label">Smarter Decisions</div>
-        <p class="outcome__desc">A framework for financial decisions that lasts far beyond college.</p>
+        <p class="outcome__desc">A framework for financial decisions that lasts far beyond college — a mental model they carry for decades.</p>
       </div>
       <div class="outcome__cell reveal">
         <div class="outcome__num">04</div>
         <div class="outcome__label">Real Confidence</div>
-        <p class="outcome__desc">Students stop feeling lost about money. That confidence changes everything.</p>
+        <p class="outcome__desc">Students stop feeling lost about money. That quiet confidence changes how they approach their entire financial life.</p>
       </div>
-      <div class="outcome__cell reveal reveal-delay-1">
+      <div class="outcome__cell reveal rd1">
         <div class="outcome__num">05</div>
         <div class="outcome__label">Financial Identity</div>
-        <p class="outcome__desc">They start seeing themselves as someone who is in control of their finances.</p>
+        <p class="outcome__desc">They start seeing themselves as someone in control. Not someone who avoids money conversations — someone who leads them.</p>
       </div>
-      <div class="outcome__cell reveal reveal-delay-2">
+      <div class="outcome__cell reveal rd2">
         <div class="outcome__num">06</div>
         <div class="outcome__label">Long-Term Mindset</div>
-        <p class="outcome__desc">The shift from short-term thinking to building a life by design.</p>
+        <p class="outcome__desc">The shift from short-term impulse to long-term intention. Building a life by design, not by default.</p>
       </div>
     </div>
   </div>
@@ -897,25 +783,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="container">
     <div class="reveal">
       <p class="section__eyebrow">For Campus Partners</p>
-      <h2 class="section__heading">Simple to implement.<br><em>Powerful to experience.</em></h2>
+      <h2 class="section__heading">Simple to set up.<br><em>Powerful to experience.</em></h2>
     </div>
     <div class="process__steps">
       <div class="process__step reveal">
         <div class="process__step-num">01 — Consult</div>
         <div class="process__step-title">Initial Conversation</div>
-        <p class="process__step-body">We understand your campus, your students, and what matters most to you. No templates — everything is tailored.</p>
+        <p class="process__step-body">We understand your campus, your students, and what matters most. No templates — everything is tailored to your institution.</p>
       </div>
-      <div class="process__step reveal reveal-delay-1">
+      <div class="process__step reveal rd1">
         <div class="process__step-num">02 — Plan</div>
         <div class="process__step-title">Program Design</div>
-        <p class="process__step-body">We build a roadmap customized to your college — timeline, format, depth, and delivery style.</p>
+        <p class="process__step-body">We build a roadmap for your college — timeline, format, depth, and delivery style. Designed around your schedule and space.</p>
       </div>
-      <div class="process__step reveal reveal-delay-2">
+      <div class="process__step reveal rd2">
         <div class="process__step-num">03 — Deliver</div>
         <div class="process__step-title">Campus Sessions</div>
-        <p class="process__step-body">Live workshops and sessions conducted on campus. Engaging, practical, and designed for Gen Z attention spans.</p>
+        <p class="process__step-body">Live sessions conducted on campus. Engaging, practical, and designed for Gen Z attention spans. Not a lecture — an experience.</p>
       </div>
-      <div class="process__step reveal reveal-delay-3">
+      <div class="process__step reveal rd3">
         <div class="process__step-num">04 — Build</div>
         <div class="process__step-title">Habit Systems</div>
         <p class="process__step-body">The program doesn't end when we leave. Students have systems and accountability to continue building long after.</p>
@@ -937,20 +823,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="reasons__item-title">Not a lecture. A system.</div>
         <p class="reasons__item-body">Most financial workshops deliver information. Finverze builds behavior. There's a big difference — and students feel it immediately.</p>
       </div>
-      <div class="reasons__item reveal">
+      <div class="reasons__item reveal rd1">
         <span class="reasons__item-num">02</span>
         <div class="reasons__item-title">Student-first, not syllabus-first.</div>
-        <p class="reasons__item-body">We don't talk about textbook finance. We talk about real money challenges that your students face today — subscriptions, peer pressure, first salaries, goals.</p>
+        <p class="reasons__item-body">We don't teach textbook finance. We talk about real money challenges your students face today — subscriptions, peer pressure, first salaries, big goals.</p>
       </div>
       <div class="reasons__item reveal">
         <span class="reasons__item-num">03</span>
         <div class="reasons__item-title">Flexible for your campus.</div>
-        <p class="reasons__item-body">One-day awareness session or a full 8-week cohort — we work with your schedule, your space, your students.</p>
+        <p class="reasons__item-body">A 1-day awareness session or an intensive 7-day cohort — we work with your schedule, your space, and your students.</p>
       </div>
-      <div class="reasons__item reveal">
+      <div class="reasons__item reveal rd1">
         <span class="reasons__item-num">04</span>
         <div class="reasons__item-title">Adds real value beyond academics.</div>
-        <p class="reasons__item-body">Colleges that bring Finverze are telling their students: we care about your whole life, not just your GPA. That means something.</p>
+        <p class="reasons__item-body">Colleges that bring Finverze are telling their students: we care about your whole life, not just your GPA. That signal means everything.</p>
       </div>
       <div class="reasons__item reveal">
         <span class="reasons__item-num">05</span>
@@ -967,16 +853,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="book__inner">
       <div class="book__left">
         <p class="section__eyebrow reveal">Get Started</p>
-        <h2 class="book__heading reveal reveal-delay-1">Bring Finverze<br>to your campus.</h2>
-        <p class="book__subhead reveal reveal-delay-2">
-          Tell us about your college and we'll reach out within 24 hours to explore how we can work together.
-        </p>
-        <div class="book__contact reveal reveal-delay-3">
-          <span>Direct contact:</span>
-          <a href="mailto:founder@finverze.com">founder@finverze.com</a>
+        <h2 class="book__heading reveal rd1">Bring Finverze<br>to your campus.</h2>
+        <p class="book__subhead reveal rd2">Tell us about your college and we'll reach out within 24 hours to explore how we can work together.</p>
+        <div class="book__contact reveal rd3">
+          Direct contact: <a href="mailto:founder@finverze.com">founder@finverze.com</a>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
+      <div class="reveal rd2">
         <div class="form">
           <form id="bookForm">
             <div class="form__row">
@@ -985,8 +868,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
                 <input class="form__input" type="text" id="college" name="college" placeholder="e.g. Delhi University" required>
               </div>
               <div class="form__group">
-                <label class="form__label" for="contact">Contact Person</label>
-                <input class="form__input" type="text" id="contact" name="contact" placeholder="Your full name" required>
+                <label class="form__label" for="contact-name">Contact Person</label>
+                <input class="form__input" type="text" id="contact-name" name="contact" placeholder="Your full name" required>
               </div>
             </div>
             <div class="form__row">
@@ -1000,14 +883,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
               </div>
             </div>
             <div class="form__group">
-              <label class="form__label" for="program">Program Interested In</label>
+              <label class="form__label" for="program">Which program are you interested in?</label>
               <select class="form__select" id="program" name="program" required>
                 <option value="" disabled selected>Select a program</option>
-                <option>Awareness Session (1-day)</option>
-                <option>The Finverze Cohort (8-week)</option>
-                <option>Finverze Advanced</option>
-                <option>Custom Campus Program</option>
+                <option>The Finverze Cohort (7-day)</option>
+                <option>Finverze Advanced (14-day)</option>
               </select>
+              <div style="font-size:0.74rem;color:var(--soft);margin-top:6px;line-height:1.5;">
+                ✦ The Awareness Session (1-day workshop) is included with all campus partnerships by default.
+              </div>
             </div>
             <button type="submit" class="form__submit">Book a Session →</button>
             <div class="form__success" id="formSuccess">
@@ -1026,10 +910,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <h2 class="cta-banner__heading reveal">
       The financial generation<br><em>starts at your campus.</em>
     </h2>
-    <p class="cta-banner__sub reveal reveal-delay-1">Start with one conversation. Build something that lasts.</p>
-    <div class="cta-banner__actions reveal reveal-delay-2">
-      <a href="#contact" class="btn btn--primary-gradient btn--large">Schedule a Discussion</a>
-      <a href="mailto:founder@finverze.com" class="btn btn--outline-dark btn--large" style="color:#fff;border-color:rgba(255,255,255,0.2);">founder@finverze.com</a>
+    <p class="cta-banner__sub reveal rd1">Start with one conversation. Build something that lasts.</p>
+    <div class="cta-banner__actions reveal rd2">
+      <a href="#contact" class="btn btn--violet btn--large">Schedule a Discussion</a>
+      <a href="mailto:founder@finverze.com" class="btn btn--ghost btn--large" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.15);">founder@finverze.com</a>
     </div>
   </div>
 </section>
@@ -1047,7 +931,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="footer__links">
           <a href="#about">About</a>
           <a href="#cohort">The Cohort</a>
-          <a href="#process">Programs</a>
+          <a href="#programs">Programs</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -1092,7 +976,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // FORM
