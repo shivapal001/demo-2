@@ -56,12 +56,28 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   transition:background 0.4s,border-color 0.4s,box-shadow 0.4s;
   border-bottom:1px solid transparent;
 }
+.nav__logo{font-family:var(--sans);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:#fff;transition:color 0.4s;}
+.nav__links a{font-size:0.83rem;font-weight:500;color:rgba(255,255,255,0.5);transition:color 0.2s;}
+.nav__links a:hover{color:#fff;}
+.nav .btn--ghost{color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.18);}
+.nav .btn--ghost:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.35);}
+.nav .btn--solid{background:#fff;color:var(--ink);}
+.nav .btn--solid:hover{background:var(--paper);}
+.nav__hamburger span{background:#fff;}
 .nav.scrolled{
   background:rgba(255,255,255,0.92);
   border-color:var(--rule);
   backdrop-filter:blur(20px);
   box-shadow:0 1px 0 var(--rule);
 }
+.nav.scrolled .nav__logo{color:var(--ink);}
+.nav.scrolled .nav__links a{color:var(--mid);}
+.nav.scrolled .nav__links a:hover{color:var(--ink);}
+.nav.scrolled .btn--ghost{color:var(--ink);border-color:var(--rule);}
+.nav.scrolled .btn--ghost:hover{background:var(--paper);border-color:var(--ink-3);}
+.nav.scrolled .btn--solid{background:var(--ink);color:#fff;}
+.nav.scrolled .btn--solid:hover{background:var(--ink-2);}
+.nav.scrolled .nav__hamburger span{background:var(--ink);}
 .nav__logo{font-family:var(--sans);font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);}
 .nav__links{display:flex;gap:32px;list-style:none;align-items:center;}
 .nav__links a{font-size:0.83rem;font-weight:500;color:var(--mid);transition:color 0.2s;}
@@ -89,22 +105,146 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
-  padding:100px 40px 80px;
+  padding:100px 80px 80px;
   position:relative;overflow:hidden;
-  background:#fff;
+  background:#0a0a14;
   gap:60px;
 }
+
+.hero__left{padding-left:40px;}
+
+/* Hero text overrides for dark bg */
+.hero .hero__ticker{color:rgba(255,255,255,0.4);}
+.hero .hero__headline{color:#ffffff;}
+.hero .hero__sub{color:rgba(255,255,255,0.5);}
+.hero .hero__proof-item{color:rgba(255,255,255,0.35);}
+.hero .hero__proof-item strong{color:rgba(255,255,255,0.75);}
+.hero .hero__proof-sep{background:rgba(255,255,255,0.12);}
+.btn--ghost.hero-ghost{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.18);}
+.btn--ghost.hero-ghost:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.35);}
+
+/* Hero panel override for dark bg */
+.hero .hero__panel{
+  background:rgba(255,255,255,0.05);
+  border-color:rgba(255,255,255,0.1);
+}
+.hero .hero__panel::before{background:linear-gradient(135deg,rgba(108,71,255,0.12) 0%,rgba(255,77,109,0.07) 100%);}
+.hero .hero__panel-label{color:rgba(255,255,255,0.3);}
+.hero .hero__panel-stat-val{color:#fff;}
+.hero .hero__panel-stat-val span{color:rgba(255,255,255,0.4);}
+.hero .hero__panel-stat-label{color:rgba(255,255,255,0.35);}
+.hero .hero__panel-divider{background:rgba(255,255,255,0.08);}
+.hero .hero__panel-quote{color:rgba(255,255,255,0.4);}
+.hero .hero__panel-quote::before{color:rgba(255,255,255,0.08);}
+/* inline mini stats inside panel */
+.hero .hero__panel [style*="color:var(--ink)"]{color:#fff !important;}
+.hero .hero__panel [style*="color:var(--mid)"]{color:rgba(255,255,255,0.35) !important;}
 
 .hero__left{position:relative;z-index:5;}
 .hero__right{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;}
 
-/* Gradient blobs only on right side now, contained */
-.blob1{position:absolute;width:500px;height:500px;top:-80px;right:-60px;background:radial-gradient(ellipse,rgba(108,71,255,0.5) 0%,transparent 70%);filter:blur(55px);animation:float1 8s ease-in-out infinite;pointer-events:none;}
-.blob2{position:absolute;width:420px;height:420px;top:80px;right:60px;background:radial-gradient(ellipse,rgba(255,77,109,0.4) 0%,transparent 70%);filter:blur(50px);animation:float2 10s ease-in-out infinite;pointer-events:none;}
-.blob3{position:absolute;width:380px;height:380px;top:240px;right:-20px;background:radial-gradient(ellipse,rgba(245,200,66,0.35) 0%,transparent 70%);filter:blur(60px);animation:float3 12s ease-in-out infinite;pointer-events:none;}
-@keyframes float1{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(-20px,15px) scale(1.05);}66%{transform:translate(15px,-12px) scale(0.95);}}
-@keyframes float2{0%,100%{transform:translate(0,0) scale(1);}40%{transform:translate(20px,25px) scale(1.07);}70%{transform:translate(-15px,-18px) scale(0.97);}}
-@keyframes float3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-12px,20px) scale(1.04);}}
+
+
+/* ─── HERO GEOMETRIC SHAPES ─── */
+.hero__shapes{
+  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+}
+/* Large circle top-right */
+.shape{position:absolute;border-radius:50%;will-change:transform;}
+
+.shape--c1{
+  width:clamp(180px,28vw,380px);height:clamp(180px,28vw,380px);
+  top:60%;right:5%;
+  background:var(--violet);
+  opacity:0.82;
+  animation:shapeFloat1 18s ease-in-out infinite;
+}
+.shape--c2{
+  width:clamp(60px,9vw,120px);height:clamp(60px,9vw,120px);
+  top:70%;left:5%;
+  background:var(--violet);
+  opacity:0.75;
+  animation:shapeFloat2 22s ease-in-out infinite;
+}
+.shape--c3{
+  width:clamp(90px,14vw,190px);height:clamp(90px,14vw,190px);
+  bottom:2%;left:30%;
+  background:var(--violet);
+  opacity:0.72;
+  animation:shapeFloat3 26s ease-in-out infinite;
+}
+/* Rounded rectangle / card shape */
+.shape--sq1{
+  position:absolute;
+  width:clamp(100px,14vw,190px);height:clamp(100px,14vw,190px);
+  border-radius:28px;
+  top:55%;right:35%;
+  background:rgba(180,170,210,0.55);
+  transform:rotate(-18deg);
+  animation:shapeRotate1 28s ease-in-out infinite;
+  opacity:0.7;
+}
+/* Small accent dot */
+.shape--dot{
+  width:clamp(22px,3.5vw,48px);height:clamp(22px,3.5vw,48px);
+  border-radius:50%;
+  top:80%;right:20%;
+  background:var(--violet);
+  opacity:0.45;
+  animation:shapeFloatDot 15s ease-in-out infinite;
+}
+
+@keyframes shapeFloat1{
+  0%  { transform: translate(0px, 0px) scale(1); }
+  20% { transform: translate(60px, -80px) scale(1.04); }
+  40% { transform: translate(-40px, -140px) scale(0.97); }
+  60% { transform: translate(90px, -60px) scale(1.06); }
+  80% { transform: translate(-20px, -110px) scale(0.98); }
+  100%{ transform: translate(0px, 0px) scale(1); }
+}
+@keyframes shapeFloat2{
+  0%  { transform: translate(0px, 0px); }
+  25% { transform: translate(120px, -90px); }
+  50% { transform: translate(60px, -180px); }
+  75% { transform: translate(-80px, -100px); }
+  100%{ transform: translate(0px, 0px); }
+}
+@keyframes shapeFloat3{
+  0%  { transform: translate(0px, 0px) scale(1); }
+  30% { transform: translate(100px, -120px) scale(1.05); }
+  55% { transform: translate(200px, -60px) scale(0.96); }
+  80% { transform: translate(80px, -160px) scale(1.03); }
+  100%{ transform: translate(0px, 0px) scale(1); }
+}
+@keyframes shapeRotate1{
+  0%  { transform: rotate(-18deg) translate(0px, 0px); }
+  25% { transform: rotate(5deg) translate(-100px, -80px) scale(1.05); }
+  50% { transform: rotate(-30deg) translate(60px, -160px) scale(0.95); }
+  75% { transform: rotate(12deg) translate(-60px, -60px) scale(1.07); }
+  100%{ transform: rotate(-18deg) translate(0px, 0px); }
+}
+@keyframes shapeFloatDot{
+  0%  { transform: translate(0px, 0px); }
+  20% { transform: translate(-80px, 60px); }
+  45% { transform: translate(100px, 120px); }
+  70% { transform: translate(-40px, 200px); }
+  100%{ transform: translate(0px, 0px); }
+}
+
+/* Mobile: shrink shapes further, keep them in background only */
+@media(max-width:900px){
+  .shape--c1{top:-5%;right:-6%;opacity:0.65;}
+  .shape--c2{top:auto;bottom:35%;left:1%;opacity:0.55;}
+  .shape--c3{bottom:2%;left:4%;opacity:0.55;}
+  .shape--sq1{right:2%;top:25%;opacity:0.45;}
+  .shape--dot{display:none;}
+}
+@media(max-width:600px){
+  .shape--c1{width:180px;height:180px;top:-3%;right:-8%;}
+  .shape--sq1{width:100px;height:100px;}
+  .shape--c2{width:60px;height:60px;}
+  .shape--c3{width:80px;height:80px;}
+}
 
 /* Hero right panel   stat card */
 .hero__panel{
@@ -429,7 +569,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;min-height:unset;}
+  .hero{grid-template-columns:1fr;padding:100px 32px 60px;gap:40px;min-height:unset;}
+  .hero__left{padding-left:0;}
   .hero__right{justify-content:flex-start;}
   .hero__panel{max-width:100%;}
   .blob1,.blob2,.blob3{opacity:0.4;}
@@ -488,38 +629,35 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Gradient blobs contained to right half -->
-  <div class="blob1"></div>
-  <div class="blob2"></div>
-  <div class="blob3"></div>
+  <!-- Geometric floating shapes (background decorations) -->
+  <div class="hero__shapes" aria-hidden="true">
+    <div class="shape shape--c1"></div>
+    <div class="shape shape--c2"></div>
+    <div class="shape shape--c3"></div>
+    <div class="shape shape--sq1"></div>
+    <div class="shape shape--dot"></div>
+  </div>
 
   <div class="hero__left">
     <div class="hero__ticker">
       <span class="hero__ticker-live"></span>
-      Now accepting campus partners   2026 cohort
+      Now accepting campus partners — 2026 cohort
     </div>
     <h1 class="hero__headline reveal">
       The future of<br><span class="accent">student financial</span><br>discipline.
     </h1>
     <p class="hero__sub reveal rd1">
-      Programs that build real money habits  not a workshop, a transformation system from first session to lifelong discipline.
+      Real money habits for college students.<br>Not a lecture — a system.
     </p>
     <div class="hero__actions reveal rd2">
       <a href="#cohort" class="btn btn--violet btn--large">Explore The Cohort</a>
-      <a href="#contact" class="btn btn--ghost btn--large">Partner With Us</a>
-    </div>
-    <div class="hero__proof reveal rd3">
-      <span class="hero__proof-item"><strong>Campus-first</strong> delivery</span>
-      <span class="hero__proof-sep"></span>
-      <span class="hero__proof-item"><strong>Structured</strong> curriculum</span>
-      <span class="hero__proof-sep"></span>
-      <span class="hero__proof-item"><strong>Habit-driven</strong> outcomes</span>
+      <a href="#contact" class="btn btn--ghost btn--large hero-ghost">Partner With Us</a>
     </div>
   </div>
 
   <div class="hero__right reveal rd2">
     <div class="hero__panel">
-      <div class="hero__panel-label">The Finverze Cohort   By the numbers</div>
+      <div class="hero__panel-label">The Finverze Cohort — By the numbers</div>
       <div class="hero__panel-stat">
         <div class="hero__panel-stat-val">30 <span>seats / batch</span></div>
         <div class="hero__panel-stat-label">Selective intake, every cohort</div>
@@ -537,7 +675,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
       </div>
       <div class="hero__panel-divider"></div>
       <div class="hero__panel-quote">
-        <p>Schools teach formulas for exams. Nobody teaches how money actually works.</p>
+        <p>Schools teach formulas. Nobody teaches money.</p>
       </div>
     </div>
   </div>
@@ -572,11 +710,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
       <div class="problem__left reveal">
         <div class="problem__eyebrow">The Problem</div>
         <div class="problem__statement">
-          Students remember formulas<br>for exams.<br>
-          <em>But nobody teaches them<br>how money works.</em>
+          12 years of school.<br>
+          <em>Zero classes on money.</em>
         </div>
         <p class="problem__note">
-          Schools have taught chemistry, history, and calculus for decades. But the one thing every student will deal with for the rest of their life   money   gets zero class time. Finverze fixes that.
+          Every student will deal with money for life. Yet no school teaches it. Finverze fixes that.
         </p>
       </div>
       <div class="problem__right reveal rd2">
@@ -585,21 +723,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
             <div class="problem__card-icon">📚</div>
             <div>
               <div class="problem__card-title">12 years of school</div>
-              <div class="problem__card-desc">Students learn trigonometry, organic chemistry, and essay writing   but not how a bank account, EMI, or savings plan works.</div>
+              <div class="problem__card-desc">Trigonometry, yes. How a bank account works? Never covered.</div>
             </div>
           </div>
           <div class="problem__card">
             <div class="problem__card-icon">💸</div>
             <div>
               <div class="problem__card-title">First salary, zero plan</div>
-              <div class="problem__card-desc">Most graduates receive their first paycheck with no idea how to save, invest, or budget. The habits they form in those first months last decades.</div>
+              <div class="problem__card-desc">Graduates get paid. Nobody taught them what to do next.</div>
             </div>
           </div>
           <div class="problem__card">
             <div class="problem__card-icon">🔄</div>
             <div>
               <div class="problem__card-title">One workshop isn't enough</div>
-              <div class="problem__card-desc">Financial literacy talks create awareness   but not behavior change. Real discipline requires structure, repetition, and accountability.</div>
+              <div class="problem__card-desc">Awareness doesn't build habits. Structure and repetition does.</div>
             </div>
           </div>
         </div>
@@ -615,7 +753,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   <div class="container">
     <div class="reveal">
       <p class="section__eyebrow">The Journey</p>
-      <h2 class="section__heading">1 workshop. 2 programs.<br><em>One transformation.</em></h2>
+      <h2 class="section__heading">3 touchpoints.<br><em>One transformation.</em></h2>
     </div>
     <div class="journey__stages">
 
@@ -628,7 +766,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
         </div>
         <div class="stage__duration">1 Day · Included</div>
         <div class="stage__name">Awareness Session</div>
-        <p class="stage__desc">A powerful on-campus workshop that shifts how students think about money. This happens at every campus we partner with   no selection needed. The starting point for every Finverze journey.</p>
+        <p class="stage__desc">An on-campus workshop that shifts how students think about money. Included with every partnership.</p>
         <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;color:var(--mid);background:var(--paper);border-radius:100px;padding:5px 14px;border:1px solid var(--rule);">✦ Standard for all partners</div>
       </div>
 
@@ -641,7 +779,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
         </div>
         <div class="stage__duration">7 Days</div>
         <div class="stage__name">The Finverze Cohort</div>
-        <p class="stage__desc">A selective, intensive program for students serious about building financial discipline. Not a course   a curated cohort experience with accountability, structure, and a peer community.</p>
+        <p class="stage__desc">Selective. Intensive. 30 students per batch. Built for real behavior change, not just awareness.</p>
         <div class="stage__badge">
           <span class="stage__badge-dot"></span> Selective Intake
         </div>
@@ -656,7 +794,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
         </div>
         <div class="stage__duration">14 Days</div>
         <div class="stage__name">Finverze Advanced</div>
-        <p class="stage__desc">For graduates of The Cohort ready to go deeper   advanced financial frameworks, real-world systems, and long-term habit architecture that creates lasting change.</p>
+        <p class="stage__desc">For Cohort graduates ready to go deeper. Advanced frameworks, real-world systems, lasting habits.</p>
       </div>
 
     </div>
@@ -671,7 +809,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
         <div class="cohort__eyebrow reveal">The Finverze Cohort</div>
         <h2 class="cohort__heading reveal rd1">Not a course.<br><em>A selection.</em></h2>
         <p class="cohort__body reveal rd2">
-          The Cohort isn't open to everyone. It's a curated experience for students who are ready to commit to real financial discipline   with accountability, structure, and a community that takes it seriously.
+          30 seats. Curated intake. Built for students who are ready to commit.
         </p>
         <div class="cohort__features reveal rd3">
           <div class="cohort__feature">
@@ -680,7 +818,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
             </div>
             <div>
               <div class="cohort__feature-title">Structured Curriculum</div>
-              <div class="cohort__feature-desc">A clear 7-day roadmap   not random content. Every session builds on the last, designed for real behavior change.</div>
+              <div class="cohort__feature-desc">7 days. Every session builds on the last.</div>
             </div>
           </div>
           <div class="cohort__feature">
@@ -689,7 +827,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
             </div>
             <div>
               <div class="cohort__feature-title">Peer Accountability</div>
-              <div class="cohort__feature-desc">A cohort of 30 students who hold each other to the standard. You're not learning alone.</div>
+              <div class="cohort__feature-desc">30 students. One standard. No learning alone.</div>
             </div>
           </div>
           <div class="cohort__feature">
@@ -698,7 +836,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
             </div>
             <div>
               <div class="cohort__feature-title">Habit Architecture</div>
-              <div class="cohort__feature-desc">Systems designed to outlast the program   the discipline you build stays long after the cohort ends.</div>
+              <div class="cohort__feature-desc">Systems built to outlast the program.</div>
             </div>
           </div>
         </div>
@@ -741,38 +879,38 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   <div class="container">
     <div class="reveal">
       <p class="section__eyebrow">Student Outcomes</p>
-      <h2 class="section__heading">What students<br><em>actually build</em></h2>
+      <h2 class="section__heading">What students<br><em>walk away with</em></h2>
     </div>
     <div class="outcomes__grid">
       <div class="outcome__cell reveal">
         <div class="outcome__num">01</div>
         <div class="outcome__label">Spending Awareness</div>
-        <p class="outcome__desc">Students learn to track where their money goes   and actually change the behavior, not just know about it.</p>
+        <p class="outcome__desc">They know where their money goes — and change it.</p>
       </div>
       <div class="outcome__cell reveal rd1">
         <div class="outcome__num">02</div>
         <div class="outcome__label">Saving Discipline</div>
-        <p class="outcome__desc">Not just knowing to save   building the habit that survives peer pressure, impulsive decisions, and real life.</p>
+        <p class="outcome__desc">A habit that survives peer pressure and real life.</p>
       </div>
       <div class="outcome__cell reveal rd2">
         <div class="outcome__num">03</div>
         <div class="outcome__label">Smarter Decisions</div>
-        <p class="outcome__desc">A framework for financial decisions that lasts far beyond college   a mental model they carry for decades.</p>
+        <p class="outcome__desc">A mental model for money that lasts decades.</p>
       </div>
       <div class="outcome__cell reveal">
         <div class="outcome__num">04</div>
         <div class="outcome__label">Real Confidence</div>
-        <p class="outcome__desc">Students stop feeling lost about money. That quiet confidence changes how they approach their entire financial life.</p>
+        <p class="outcome__desc">No more avoiding money conversations.</p>
       </div>
       <div class="outcome__cell reveal rd1">
         <div class="outcome__num">05</div>
         <div class="outcome__label">Financial Identity</div>
-        <p class="outcome__desc">They start seeing themselves as someone in control. Not someone who avoids money conversations   someone who leads them.</p>
+        <p class="outcome__desc">They see themselves as someone in control.</p>
       </div>
       <div class="outcome__cell reveal rd2">
         <div class="outcome__num">06</div>
         <div class="outcome__label">Long-Term Mindset</div>
-        <p class="outcome__desc">The shift from short-term impulse to long-term intention. Building a life by design, not by default.</p>
+        <p class="outcome__desc">Building a life by design, not by default.</p>
       </div>
     </div>
   </div>
@@ -783,28 +921,28 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   <div class="container">
     <div class="reveal">
       <p class="section__eyebrow">For Campus Partners</p>
-      <h2 class="section__heading">Simple to set up.<br><em>Powerful to experience.</em></h2>
+      <h2 class="section__heading">Simple to start.<br><em>Powerful to experience.</em></h2>
     </div>
     <div class="process__steps">
       <div class="process__step reveal">
-        <div class="process__step-num">01   Consult</div>
-        <div class="process__step-title">Initial Conversation</div>
-        <p class="process__step-body">We understand your campus, your students, and what matters most. No templates   everything is tailored to your institution.</p>
+        <div class="process__step-num">01 — Consult</div>
+        <div class="process__step-title">We listen first</div>
+        <p class="process__step-body">One conversation about your campus and students. No templates.</p>
       </div>
       <div class="process__step reveal rd1">
-        <div class="process__step-num">02   Plan</div>
-        <div class="process__step-title">Program Design</div>
-        <p class="process__step-body">We build a roadmap for your college   timeline, format, depth, and delivery style. Designed around your schedule and space.</p>
+        <div class="process__step-num">02 — Plan</div>
+        <div class="process__step-title">We design the program</div>
+        <p class="process__step-body">Timeline, format, and delivery — all tailored to your schedule.</p>
       </div>
       <div class="process__step reveal rd2">
-        <div class="process__step-num">03   Deliver</div>
-        <div class="process__step-title">Campus Sessions</div>
-        <p class="process__step-body">Live sessions conducted on campus. Engaging, practical, and designed for Gen Z attention spans. Not a lecture   an experience.</p>
+        <div class="process__step-num">03 — Deliver</div>
+        <div class="process__step-title">Live on campus</div>
+        <p class="process__step-body">Engaging sessions built for Gen Z. Not a lecture — an experience.</p>
       </div>
       <div class="process__step reveal rd3">
-        <div class="process__step-num">04   Build</div>
-        <div class="process__step-title">Habit Systems</div>
-        <p class="process__step-body">The program doesn't end when we leave. Students have systems and accountability to continue building long after.</p>
+        <div class="process__step-num">04 — Build</div>
+        <div class="process__step-title">Habits that stick</div>
+        <p class="process__step-body">Students leave with systems that outlast the program.</p>
       </div>
     </div>
   </div>
@@ -821,27 +959,27 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
       <div class="reasons__item reveal">
         <span class="reasons__item-num">01</span>
         <div class="reasons__item-title">Not a lecture. A system.</div>
-        <p class="reasons__item-body">Most financial workshops deliver information. Finverze builds behavior. There's a big difference   and students feel it immediately.</p>
+        <p class="reasons__item-body">We build behavior, not just awareness. Students feel the difference immediately.</p>
       </div>
       <div class="reasons__item reveal rd1">
         <span class="reasons__item-num">02</span>
         <div class="reasons__item-title">Student-first, not syllabus-first.</div>
-        <p class="reasons__item-body">We don't teach textbook finance. We talk about real money challenges your students face today   subscriptions, peer pressure, first salaries, big goals.</p>
+        <p class="reasons__item-body">Real money challenges students face today — not textbook theory.</p>
       </div>
       <div class="reasons__item reveal">
         <span class="reasons__item-num">03</span>
         <div class="reasons__item-title">Flexible for your campus.</div>
-        <p class="reasons__item-body">A 1-day awareness session or an intensive 7-day cohort   we work with your schedule, your space, and your students.</p>
+        <p class="reasons__item-body">1-day session or 7-day cohort — we work around your schedule.</p>
       </div>
       <div class="reasons__item reveal rd1">
         <span class="reasons__item-num">04</span>
         <div class="reasons__item-title">Adds real value beyond academics.</div>
-        <p class="reasons__item-body">Colleges that bring Finverze are telling their students: we care about your whole life, not just your GPA. That signal means everything.</p>
+        <p class="reasons__item-body">Tells your students: we care about your whole life, not just your GPA.</p>
       </div>
       <div class="reasons__item reveal">
         <span class="reasons__item-num">05</span>
         <div class="reasons__item-title">Premium experience, campus scale.</div>
-        <p class="reasons__item-body">The quality feels exclusive. The reach is institution-wide. That's the combination that creates real cultural change on campus.</p>
+        <p class="reasons__item-body">Exclusive quality. Institution-wide reach. That's real cultural change.</p>
       </div>
     </div>
   </div>
@@ -854,9 +992,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
       <div class="book__left">
         <p class="section__eyebrow reveal">Get Started</p>
         <h2 class="book__heading reveal rd1">Bring Finverze<br>to your campus.</h2>
-        <p class="book__subhead reveal rd2">Tell us about your college and we'll reach out within 24 hours to explore how we can work together.</p>
+        <p class="book__subhead reveal rd2">We'll get back to you within 24 hours.</p>
         <div class="book__contact reveal rd3">
-          Direct contact: <a href="mailto:founder@finverze.com">founder@finverze.com</a>
+          <a href="mailto:founder@finverze.com">founder@finverze.com</a>
         </div>
       </div>
       <div class="reveal rd2">
@@ -889,8 +1027,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
                 <option>The Finverze Cohort (7-day)</option>
                 <option>Finverze Advanced (14-day)</option>
               </select>
-              <div style="font-size:0.74rem;color:var(--soft);margin-top:6px;line-height:1.5;">
-                ✦ The Awareness Session (1-day workshop) is included with all campus partnerships by default.
+              <div style="font-size:0.74rem;color:var(--soft);margin-top:6px;">
+                ✦ Awareness Session included with all partnerships.
               </div>
             </div>
             <button type="submit" class="form__submit">Book a Session →</button>
@@ -910,7 +1048,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     <h2 class="cta-banner__heading reveal">
       The financial generation<br><em>starts at your campus.</em>
     </h2>
-    <p class="cta-banner__sub reveal rd1">Start with one conversation. Build something that lasts.</p>
+    <p class="cta-banner__sub reveal rd1">One conversation. That's all it takes.</p>
     <div class="cta-banner__actions reveal rd2">
       <a href="#contact" class="btn btn--violet btn--large">Schedule a Discussion</a>
       <a href="mailto:founder@finverze.com" class="btn btn--ghost btn--large" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.15);">founder@finverze.com</a>
@@ -924,7 +1062,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     <div class="footer__inner">
       <div>
         <div class="footer__brand-name">Finverze</div>
-        <p class="footer__brand-desc">Financial discipline and awareness programs for students and campuses across India.</p>
+        <p class="footer__brand-desc">Financial discipline programs for students across India.</p>
       </div>
       <div>
         <div class="footer__col-title">Navigation</div>
